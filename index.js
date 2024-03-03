@@ -1,5 +1,7 @@
-let firstCard = 10
-let secondCard = 4
+// 2. Use getRandomCard() to set the values of firstCard and secondCard
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
+let cards = [firstCard, secondCard]
 let sum = firstCard + secondCard
 let hasBlackJack = false
 let isAlive = true
@@ -8,8 +10,22 @@ let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 
+// 1. Create a function, getRandomCard(), that always returns the number 5
+function getRandomCard() {
+    return 5
+}
+
+
 function startGame() {
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+    renderGame()
+}
+
+function renderGame() {
+    cardsEl.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
+    }
+    
     sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
@@ -25,12 +41,10 @@ function startGame() {
 
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
-    // 1. Create a card variable, and hard code its value to a number (2-11)
-    let extraCard = 4
-    // 2. Add the new card to the sum variable
-    sum = sum + extraCard
-    console.log(sum)
-    // 3. Call startGame()
-    startGame()
+    // 3. Use the getRandomCard() to set the value of card
+    let card = getRandomCard()
+    sum += card
+    cards.push(card)
+    console.log(cards)
+    renderGame()
 }
