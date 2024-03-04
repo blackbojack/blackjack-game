@@ -9,9 +9,21 @@ let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 
-// Make this function return a random number between 1 and 13
+
 function getRandomCard() {
-    return Math.floor( Math.random()*13 ) + 1 // 1-13
+    // if 1     -> return 11
+    // if 11-13 -> return 10
+    let randomNumber = Math.floor( Math.random()*13 ) + 1
+    
+    console.log(randomNumber)
+    
+    if (randomNumber == 1) {
+        return 11
+    } else if (randomNumber >= 11 && randomNumber <= 13) {
+        return 10
+    } else {
+        return randomNumber
+    }
 }
 
 function startGame() {
